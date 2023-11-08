@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:itemopia/left_drawer.dart';
 
 class ShopItem {
   final String name;
@@ -17,6 +18,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  int get counter => _counter; // Metode getter
+
   void _incrementCounter() {
     setState(() {
       _counter++;
@@ -33,15 +36,21 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Shopping List'),
+        title: Text(
+          'Itemopia',
+        ),
+        backgroundColor: Colors.yellow,
+        foregroundColor: Colors.white,
       ),
+      drawer: LeftDrawer(), // Menghapus const pada LeftDrawer()
+
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(
             children: <Widget>[
-              const Padding(
-                padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+              Padding(
+                padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
                 child: Text(
                   'PBP Shop',
                   textAlign: TextAlign.center,
@@ -69,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        child: Icon(Icons.add),
       ),
     );
   }
@@ -83,7 +92,7 @@ class ShopCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.indigo,
+      color: Colors.yellow,
       child: InkWell(
         onTap: () {
           ScaffoldMessenger.of(context)
@@ -106,7 +115,7 @@ class ShopCard extends StatelessWidget {
                 Text(
                   item.name,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.white),
                 ),
               ],
             ),
