@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:itemopia/menu.dart';
 import 'package:itemopia/itemopia_form.dart';
+import 'package:itemopia/ProductTablePage.dart';
+import 'package:itemopia/data_manager.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({Key? key});
@@ -12,7 +14,7 @@ class LeftDrawer extends StatelessWidget {
         children: [
           DrawerHeader(
             decoration: BoxDecoration(
-              color: Colors.yellow,
+              color: Colors.indigo,
             ),
             child: Column(
               children: [
@@ -49,6 +51,19 @@ class LeftDrawer extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => ShopFormPage(),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.checklist),
+            title: Text('Lihat Produk'),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      ProductTablePage(products: DataManager.products),
                 ),
               );
             },

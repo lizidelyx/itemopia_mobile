@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:itemopia/itemopia_form.dart';
 import 'package:itemopia/left_drawer.dart';
+import 'package:itemopia/ProductTablePage.dart';
+import 'package:itemopia/data_manager.dart';
 
 class ShopItem {
   final String name;
@@ -39,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(
           'Itemopia',
         ),
-        backgroundColor: Colors.yellow,
+        backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,
       ),
       drawer: LeftDrawer(), // Menghapus const pada LeftDrawer()
@@ -89,16 +92,45 @@ class ShopCard extends StatelessWidget {
 
   const ShopCard(this.item, {Key? key}) : super(key: key);
 
+  Color getButtonColor(String itemName) {
+    switch (itemName) {
+      case "Lihat Produk":
+        return Colors.red; // Set color for "Lihat Produk" to red
+      case "Tambah Produk":
+        return Color.fromARGB(
+            255, 78, 117, 149); // Set color for "Tambah Produk" to yellow
+      case "Logout":
+        return const Color.fromARGB(
+            255, 67, 139, 69); // Set color for "Logout" to green
+      default:
+        return Colors.blue; // Set a default color if needed
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.yellow,
+      color: getButtonColor(item.name),
       child: InkWell(
         onTap: () {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(SnackBar(
-                content: Text("Kamu telah menekan tombol ${item.name}!")));
+          if (item.name == "Tambah Produk") {
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => ShopFormPage()),
+            );
+          } else if (item.name == "Lihat Produk") {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) =>
+                    ProductTablePage(products: DataManager.products),
+              ),
+            );
+          } else {
+            ScaffoldMessenger.of(context)
+              ..hideCurrentSnackBar()
+              ..showSnackBar(SnackBar(
+                content: Text("Kamu telah menekan tombol ${item.name}!"),
+              ));
+          }
         },
         child: Container(
           padding: const EdgeInsets.all(8),
