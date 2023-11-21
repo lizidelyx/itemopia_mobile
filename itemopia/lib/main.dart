@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:itemopia/menu.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
+import 'package:itemopia/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,14 +13,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Itemopia',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.indigo),
-        // Tambahkan warna yang sesuai dengan kebutuhan Anda, misalnya primarySwatch.
-        useMaterial3: true,
-      ),
-      home: MyHomePage(),
+    return Provider(
+      create: (_) {
+        CookieRequest request = CookieRequest();
+        return request;
+      },
+      child: MaterialApp(
+          title: 'Itemopia',
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
+            useMaterial3: true,
+          ),
+          home: LoginPage()),
     );
   }
 }
