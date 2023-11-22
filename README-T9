@@ -1,0 +1,71 @@
+1. Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+
+Ya, kita dapat melakukan pengambilan data JSON tanpa membuat model terlebih dahulu. Ini umumnya dilakukan dengan menggunakan objek Map di Dart. Data JSON di Flutter dapat diuraikan ke dalam struktur data Dart menggunakan json.decode() atau json.decode(utf8.decode(response.bodyBytes)) setelah mengambilnya menggunakan paket http. Meskipun ini memungkinkan untuk mendapatkan data tanpa membuat model, membuat model biasanya lebih disukai karena memberikan tipe statis dan memudahkan pengelolaan data.
+
+Kelebihan:
+
+    Tipe Statis: Dengan membuat model, Anda mendapatkan manfaat dari tipe statis, yang membantu mencegah kesalahan tipe data selama pengembangan.
+    Kemudahan Akses: Model menyediakan cara yang jelas dan terdokumentasi untuk mengakses dan memanipulasi data.
+
+Kekurangan:
+
+    Pekerjaan Lebih Banyak: Membuat model membutuhkan waktu dan usaha ekstra, terutama jika model tersebut memiliki banyak properti.
+
+2. Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
+Tidak ada yang disebut "CookieRequest" dalam konteks Flutter. Mungkin maksud Anda adalah "http.Request" yang digunakan dalam pustaka http Flutter. http.Request adalah objek yang mewakili permintaan HTTP. Memiliki instance Request dapat membantu dalam mengelola dan menyusun permintaan HTTP dengan mudah, termasuk header, metode, body, dll.
+
+3. Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.
+Mekanisme umum untuk pengambilan data JSON dan tampilan di Flutter adalah sebagai berikut:
+
+    Gunakan paket http untuk melakukan permintaan HTTP ke endpoint yang menyediakan data JSON.
+    Gunakan fungsi json.decode untuk menguraikan data JSON menjadi objek Dart.
+    Gunakan objek Dart tersebut untuk mengisi model atau langsung menggunakannya dalam tampilan Flutter.
+
+4. Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+Mekanisme autentikasi dari Flutter ke Django melibatkan beberapa langkah:
+
+    Pengguna memasukkan informasi akun (username dan password) di aplikasi Flutter.
+    Aplikasi Flutter mengirim permintaan HTTP ke endpoint Django yang menangani autentikasi.
+    Django memeriksa kredensial, menghasilkan token akses, dan mengembalikannya ke Flutter.
+    Aplikasi Flutter menyimpan token akses dan menggunakannya dalam setiap permintaan yang memerlukan otorisasi.
+
+
+5. Sebutkan seluruh widget yang kamu pakai pada tugas ini dan jelaskan fungsinya masing-masing.
+
+    MaterialApp: Widget ini adalah inti dari aplikasi Flutter. Ini memberikan konteks dan manajemen navigasi ke aplikasi, termasuk tema dan judul aplikasi.
+        Fungsi: Menangani hal-hal seperti tema aplikasi, navigasi, dan pengaturan aplikasi tingkat tinggi.
+
+    Scaffold: Widget ini memberikan struktur dasar untuk aplikasi Flutter, termasuk appBar, body, dan sebagainya.
+        Fungsi: Menyediakan kerangka dasar untuk tata letak dan komponen UI lainnya.
+
+    AppBar: Widget ini menyediakan bar navigasi di bagian atas layar.
+        Fungsi: Menyediakan judul dan ikon di bagian atas layar aplikasi.
+
+    Container: Widget ini memberikan wadah untuk menempatkan elemen-elemen UI lainnya.
+        Fungsi: Menyediakan wadah yang dapat diatur untuk menempatkan elemen-elemen UI di dalamnya.
+
+    Column: Widget ini mengatur anak-anaknya dalam kolom tunggal.
+        Fungsi: Menyusun elemen-elemen anak secara vertikal.
+
+    TextField: Widget ini memberikan input teks yang dapat diedit.
+        Fungsi: Menyediakan input untuk username dan password.
+
+    SizedBox: Widget ini memberikan spasi kosong atau box dengan dimensi tertentu.
+        Fungsi: Menyediakan spasi vertikal antara elemen-elemen UI.
+
+    ElevatedButton: Widget ini memberikan tombol dengan efek "raised" ketika ditekan.
+        Fungsi: Menyediakan tombol untuk mengirim data login.
+
+    FutureBuilder: Widget ini membangun suatu widget yang bergantung pada objek Future. Ini sangat berguna saat mengambil data asinkron seperti saat mengambil data dari server.
+        Fungsi: Mengelola pemrosesan data asinkron dan membangun widget berdasarkan status Future.
+
+    Text: Widget ini menampilkan teks pada layar.
+        Fungsi: Menyediakan teks sebagai label atau informasi di aplikasi.
+
+    AlertDialog: Widget ini menampilkan dialog dengan judul, konten, dan tombol aksi.
+        Fungsi: Menyediakan dialog untuk menampilkan pesan login gagal.
+
+    SnackBar: Widget ini menampilkan pesan singkat di bagian bawah layar.
+        Fungsi: Menyediakan pesan singkat untuk memberikan umpan balik ke pengguna.
+
+6. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).

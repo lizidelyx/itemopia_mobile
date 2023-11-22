@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:itemopia/itemopia_form.dart';
-import 'package:itemopia/left_drawer.dart';
+import 'package:itemopia/screen/itemopia_form.dart';
+import 'package:itemopia/widget/left_drawer.dart';
 import 'package:itemopia/ProductTablePage.dart';
 import 'package:itemopia/data_manager.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:itemopia/menu.dart';
+import 'package:itemopia/screen/menu.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:itemopia/login.dart';
